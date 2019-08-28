@@ -1,0 +1,8 @@
+[audioIn,fs] = audioread('101_1b1_Al_sc_Meditron.wav');
+[f0,idx] = pitch(audioIn,fs);
+figure
+plot(idx,f0)
+ylabel('Pitch (Hz)')
+xlabel('Sample Number')
+a=max(f0);
+disp('The Maximum Value of Frequency in Hz is: ')
