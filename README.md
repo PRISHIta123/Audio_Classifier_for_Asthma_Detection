@@ -12,8 +12,8 @@ Workflow:
 2. Connect adc converter to R pi and configure it using steps and python code
 3. Insert SD card with datasets used for training
 4. Test if microphone signals are being received by R pi
-5. Run Matlab code for checking frequency of audio signal
-6. Run Matlab codes for chebyshev low pass, chebyshev high pass and elliptic filters simultaneously on input from above .m file (orig frequency)
+5. Run Python code for checking frequency of audio signal
+6. Run Python codes for chebyshev low pass, chebyshev high pass and elliptic filters simultaneously on input from above .m file (orig frequency)
 7. Start recording audio from microphone in real time
 8. Segment filtered audio at regular intervals to match test clip time with training clip time
 9. Pass test clips through trained classifier to predict output (detected diseases if any) 
