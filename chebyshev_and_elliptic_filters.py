@@ -6,9 +6,9 @@ class IIR2Filter(object):
     def createCoeffs(self,order,cutoff,filterType,design='cheby2',rp=1,rs=1,fs=0):
         
         #defining the acceptable inputs for the design and filterType params
-        self.designs = ['cheby2']
-        self.filterTypes1 = ['lowpass','highpass','Lowpass','Highpass','low','high']
-        self.filterTypes2 = ['bandstop','bandpass','Bandstop','Bandpass']
+        self.designs = ['cheby2','elliptic']
+        self.filterTypes1 = ['lowpass','highpass']
+        self.filterTypes2 = ['bandstop','bandpass']
         
         #Error handling: other errors can arise too, but those are dealt with 
         #in the signal package.
@@ -26,6 +26,9 @@ class IIR2Filter(object):
                     
             if design == 'cheby2' :
                 self.COEFFS = signal.cheby2(order,rs,cutoff,filterType,output='sos')
+                
+            elif design =='elliptic':
+                self.COEFFS = signal.ellip(order,rp,rs,cutoff,filterType,output='sos')
         
         return self.COEFFS
         
