@@ -2,11 +2,11 @@ import numpy as np
 import scipy.signal as signal
 
 class IIR2Filter(object):           
-    
-    def createCoeffs(self,order,cutoff,filterType,design='butter',rp=1,rs=1,fs=0):
+    #fs is the audio frequency returned by matlab code.
+    def createCoeffs(self,order,cutoff,filterType,design='cheby2',rp=1,rs=1,fs=0):
         
         #defining the acceptable inputs for the design and filterType params
-        self.designs = ['butter','cheby1','cheby2']
+        self.designs = ['cheby2']
         self.filterTypes1 = ['lowpass','highpass','Lowpass','Highpass','low','high']
         self.filterTypes2 = ['bandstop','bandpass','Bandstop','Bandpass']
         
@@ -15,31 +15,21 @@ class IIR2Filter(object):
         self.isThereAnError = 1 #if there was no error then it will be set to 0
         self.COEFFS = [0] #with no error this will hold the coefficients
         
-        if design not in self.designs:
-            print('Gave wrong filter design! Remember: butter, cheby1, cheby2.')
-        elif filterType not in self.filterTypes1 and filterType not in self.filterTypes2:
-            print('Gave wrong filter type! Remember: lowpass, highpass', 
-                  ', bandpass, bandstop.')
-        elif fs < 0:
-            print('The sampling frequency has to be positive!')
-        else:
+        if fs>=0:
             self.isThereAnError = 0
         
-        #if fs was given then the given cutoffs need to be normalised to Nyquist
-        if fs and self.isThereAnError == 0:
-            for i in range(len(cutoff)):
-                cutoff[i] = cutoff[i]/fs*2
-        
-        if design == 'butter' and self.isThereAnError == 0:
-            self.COEFFS = signal.butter(order,cutoff,filterType,output='sos')
-        elif design == 'cheby1' and self.isThereAnError == 0:
-            self.COEFFS = signal.cheby1(order,rp,cutoff,filterType,output='sos')
-        elif design == 'cheby2' and self.isThereAnError == 0:
-            self.COEFFS = signal.cheby2(order,rs,cutoff,filterType,output='sos')
+        #if fs was given then the given cutoffs need to be normalised to Nyquist according to Nyquist-Shannon sampling theorem
+        if self.isThereAnError == 0:
+            if fs:
+                for i in range(len(cutoff)):
+                    cutoff[i] = cutoff[i]/fs*2
+                    
+            if design == 'cheby2' :
+                self.COEFFS = signal.cheby2(order,rs,cutoff,filterType,output='sos')
         
         return self.COEFFS
         
-    def __init__(self,order,cutoff,filterType,design='butter',rp=1,rs=1,fs=0):
+    def __init__(self,order,cutoff,filterType,design='cheby2',rp=1,rs=1,fs=0):
         self.COEFFS = self.createCoeffs(order,cutoff,filterType,design,rp,rs,fs)
         self.acc_input = np.zeros(len(self.COEFFS))
         self.acc_output = np.zeros(len(self.COEFFS))
