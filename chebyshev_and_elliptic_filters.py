@@ -3,7 +3,7 @@ import scipy.signal as signal
 
 class IIR2Filter(object):           
     #fs is the audio frequency returned by matlab code.
-    def createCoeffs(self,order,cutoff,filterType,design='cheby2',rp=1,rs=1,fs=0):
+    def createCoeffs(self,order,cutoff,filterType,design='cheby2',rp=1,rs=1,fs=44100):
         
         #defining the acceptable inputs for the design and filterType params
         self.designs = ['cheby2','elliptic']
