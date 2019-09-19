@@ -8,7 +8,6 @@ class IIR2Filter(object):
         #defining the acceptable inputs for the design and filterType params
         self.designs = ['cheby2','elliptic']
         self.filterTypes1 = ['lowpass','highpass']
-        self.filterTypes2 = ['bandstop','bandpass']
         
         #Error handling: other errors can arise too, but those are dealt with 
         #in the signal package.
