@@ -5,10 +5,10 @@ import pandas as pd
 
 fs=44100
 order=20
-cutoff=0.25*fs
-chebylowf=chebyshev_and_elliptic_filters.IIR2Filter(self,order,cutoff,'lowpass','cheby2',1,1,fs)
-chebyhighf=chebyshev_and_elliptic_filters.IIR2Filter(self,order,cutoff,'highpass','cheby2',1,1,fs)
-ellipf=chebyshev_and_elliptic_filters.IIR2Filter(self,order,cutoff,'lowpass','elliptic',1,1,fs)
+cutoff=[11025]#0.25*fs
+chebylowf=chebyshev_and_elliptic_filters.IIR2Filter(order,cutoff,'lowpass','cheby2',1,1,fs)
+chebyhighf=chebyshev_and_elliptic_filters.IIR2Filter(order,cutoff,'highpass','cheby2',1,1,fs)
+ellipf=chebyshev_and_elliptic_filters.IIR2Filter(order,cutoff,'lowpass','elliptic',1,1,fs)
 
 audio_filepaths=pd.read_csv("F://audio_paths.csv",header=None)
 
