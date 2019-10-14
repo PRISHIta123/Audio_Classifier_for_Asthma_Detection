@@ -20,3 +20,6 @@ Workflow:
 
 Link to Hybrid Classifier for Training(SVM + ANN):
 http://downloads.hindawi.com/journals/mpe/2015/209814.pdf
+https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8605515
+
+Other traditional algorithms: SVM, GNN(Gaussian Neural Netwroks), ELM (Extreme Learning Machine)
