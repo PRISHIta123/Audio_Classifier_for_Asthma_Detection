@@ -8,15 +8,13 @@ Steps for Interfacing ADC converter MCP3008 with R Pi:
 https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi?view=all
 
 Workflow:
-1. Connect microphone, monitor, keyboard to R Pi using Linux commands
+1. Connect microphone to R Pi using Linux commands
 2. Connect adc converter to R pi and configure it using steps and python code
-3. Insert SD card with datasets used for training
-4. Test if microphone signals are being received by R pi
-5. Run Matlab code for checking frequency of audio signal
-6. Run Python codes for chebyshev low pass, chebyshev high pass and elliptic filters simultaneously on input from above .m file (sampling frequency)
-7. Start recording audio from microphone in real time
-8. Segment filtered audio at regular intervals to match test clip time with training clip time
-9. Pass test clips through trained classifier to predict output (detected diseases if any) 
+3. Insert SD card with trained model
+4. Test if microphone signals are being received by R pi and pass analog signals to adc converter
+5. Filter audio using Matlab code (chebyshev filters)
+6. Segment filtered audio at regular intervals to match test clip time with training clip time
+7. Pass test clips through trained classifier to predict output (detected diseases if any) by calling the trained model from matlab
 
 Link to Stacked CNN for Training:
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8605515
