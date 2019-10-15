@@ -18,8 +18,10 @@ Workflow:
 8. Segment filtered audio at regular intervals to match test clip time with training clip time
 9. Pass test clips through trained classifier to predict output (detected diseases if any) 
 
+Link to Stacked CNN for Training:
+https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8605515
+
 Link to Hybrid Classifier for Training(SVM + ANN):
 http://downloads.hindawi.com/journals/mpe/2015/209814.pdf
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8605515
 
 Other traditional algorithms: SVM, GNN(Gaussian Neural Netwroks), ELM (Extreme Learning Machine)
